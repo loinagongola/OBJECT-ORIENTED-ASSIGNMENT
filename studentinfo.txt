@@ -1,0 +1,13 @@
+
+#student information
+
+first_name=input("enter first name: ")
+last_name=input("enter last name: ")
+age=float(input("enter age: "))
+GPA=float(input("enter GPA: "))
+major=input("enter major: ")
+address=input("enter address: ")
+
+print("hello welcome " + first_name   +   last_name + " your 
+age is " + str(age) + " your GPA is " + str(GPA) + " your 
+are majoring in " + major + " your adress is " + str(address))
