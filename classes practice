@@ -1,0 +1,115 @@
+from patient import Patient
+from tabulate import tabulate
+
+class PatientManager:
+    def __init__(self):
+        self.patients_list = []
+        self.objects_list = []
+        self.type_list = ["id", "name", "disease", "gender", "age"]
+
+def read_patients_file(self):
+    patients = []
+    with open(self, "r") as file:
+        for line in file:
+            patient_data = line.split("_")
+            patient = Patient(patient_data[0], patient_data[1], patient_data[2], patient_data[3], patient_data[4])
+            patients.append(patient)
+    return patients
+
+def main():
+    patients = []
+    patients = read_patients_file("patients.txt")
+    print(patients)
+
+if __name__ == "__main__":
+    main()
+    
+def format_patient_info_for_file(patient):
+    return f"{patient.id}_{patient.name}_{patient.disease}_{patient.gender}_{patient.age}"
+
+
+def patient_info():
+    patient_id = input("Enter patient ID: ")
+    patient_name = input("Enter patient name: ")
+    patient_disease = input("Enter patient disease: ")
+    patient_gender = input("Enter patient gender: ")
+    patient_age = input("Enter patient age: ")
+    patient = Patient(patient_id, patient_name, patient_disease, patient_gender, patient_age)
+    return patient
+
+
+def read_patients_file(filename):
+    patients = []
+    with open(filename, "r") as file:
+        for line in file:
+            patient_data = line.strip().split(",")
+            patient = Patient(patient_data[0], patient_data[1], patient_data[2], patient_data[3])
+            patients.append(patient)
+    return patients
+
+patients = read_patients_file("patients.txt")
+
+# Print the list of patients to verify that they were loaded correctly
+for patient in patients:
+    print(patient.id, patient.name, patient.disease, patient.gender, patient.age)
+
+
+def search_patient_by_id(patients):
+    patient_id = input("Enter patient ID: ")
+    found = False
+    for patient in patients:
+        if patient.id == patient_id:
+            print(f"ID: {patient.id}\nName: {patient.name}\ndisease: {patient.disease}\ngender: {patient.gender}\nage: {patient.age}")
+            found = True
+            break
+    if not found:
+        print("Can't find the patient...")
+
+
+def display_patient_info(patient):
+    print(f"ID: {patient.id}\nName: {patient.name}\ndisease: {patient.disease}\ngender: {patient.gender}\nage: {patient.age}")
+
+def edit_patient_info_by_id(patients):
+    patient_id = input("Enter patient ID: ")
+    found = False
+    for patient in patients:
+        if patient.id == patient_id:
+            found = True
+            print(f"Enter new information for patient {patient.id}:")
+            patient.name = input("Name: ")
+            patient.disease = input("disease: ")
+            patient.gender = input("gender: ")
+            patient.age = input("age: ")
+            # Write updated patient information to file
+            with open("patients.txt", "w") as f:
+                for patient in patients:
+                    f.write(f"{patient.id}_{patient.name}_{patient.disease}_{patient.gender}_{patient.age}\n")
+            print("Patient information updated.")
+            break
+    if not found:
+        print("Cannot find the patient...")
+        
+
+def display_patients_list(patients):
+    print("Patient ID\tName\tDisease\tGender\tAge")
+    for patient in patients:
+        print(f"{patient.id}\t{patient.name}\t{patient.disease}\t{patient.gender}\t{patient.age}")
+        
+def write_patients_file(patients):
+    with open("patients.txt", "w") as f:
+        for patient in patients:
+            f.write(format_patient_info_for_file(patient) + "\n")
+
+
+
+def add_patient_to_file(patients):
+    new_patient = input("enter the new patient information")
+
+    patients.append(new_patient)
+
+    new_patient_info = format_patient_info_for_file(new_patient)
+
+    with open("patients.txt", "a") as f:
+        f.write(new_patient_info + "\n")
+        
+    print("New patient has been added.")

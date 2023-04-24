@@ -1,0 +1,35 @@
+#----- practice 1
+# age = int(input("enter age: "))
+
+# expected_age = 90
+
+# left_age = expected_age - age
+
+# days = left_age * 365
+# weeks = left_age * 52
+# months = left_age * 12
+
+# print(f" you have {days} days, you have {weeks} days, you have {months} months left")
+
+#-----tip calculator, question- the bill is $150 split btwn 5 people with 12% tip. how much shud each person pay.
+
+# bill = float(input(" enter bill: "))
+# people = int(input(" enter number of people: "))
+# tip = float(12 / 100)
+
+# bill_with_tip = bill + (tip * bill)
+# for_one_person = bill_with_tip / people
+
+# print(f"each person pays {for_one_person} ")
+
+#---- write a program that works out if a given number is an odd or even number.
+
+number = int(input("enter a number")) 
+
+if number % 2 ==0:
+  print("this is an even number")
+
+else:
+  print("this is an odd number")
+
+ 

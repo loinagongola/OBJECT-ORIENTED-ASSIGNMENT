@@ -6,6 +6,4 @@ for i in nums:
      square_of_nums.append( i**2)
      
 print(square_of_nums)   
-
-
-loina  
+  
